@@ -1,33 +1,33 @@
 ---
 title: "Callbacks"
-description: "ComponentLink and Callbacks"
+description: "ComponentLink y Callbacks"
 ---
 
-## Component's `Scope<_>` API
+## API `Scope<_>` del componente
 
-The component "`Scope`" is the mechanism through which components are able to create callbacks and update themselves 
-using messages. We obtain a reference to this by calling `link()` on the context object passed to the component.
+El componente "`Scope`" es el mecanismo por el cual los componetes son capaces de crear callbacks y actualizarse a sí mismos
+usando mensajes. Obtenemos una referencia a este al llamar a `link()` en el objeto de contexto pasado al componente.
 
 ### `send_message`
 
-Sends a message to the component.
-Messages are handled by the `update` method which determines whether the component should re-render.
+Envía un mensaje al componente.
+Los mensajes son manejados por el método `update` el cual determina si el componente debe volver a renderizarse.
 
 ### `send_message_batch`
 
-Sends multiple messages to the component at the same time.
-This is similar to `send_message` but if any of the messages cause the `update` method to return `true`,
-the component will re-render after all messages in the batch have been processed.
+Envía múltiples mensajes al componente al mismo tiempo.
+Esto es similar a `send_message` pero si cualquiera de los mensajes ocasiona que el método `update` regrese `true`,
+el componente volverá a renderizarse después que todos los mensajes en el lote han sido procesados.
 
-If the given vector is empty, this function doesn't do anything.
+Si el vector proporcionado está vacío, esta función no hace nada.
 
 ### `callback`
 
-Create a callback that will send a message to the component when it is executed.
-Under the hood, it will call `send_message` with the message returned by the provided closure.
+Crea un callback que enviará un mensaje al componente cuando sea ejecutado.
+Internamente, llamará a `send_message` con el mensaje retornado por el closure proporcionado.
 
-There is a different method called `callback_once` which accepts a `FnOnce` instead of a `Fn`.
-You should use this with care though, as the resulting callback will panic if executed more than once.
+Existe un método diferente llamado `callback_once` el cual acepta un `FnOnce` en lugar de `Fn`.
+Deberías usar este con cuidado, ya que el callback resultante entrará en pánico si se ejecuta más de una vez.
 
 ```rust
 use yew::{html, Component, Context, Html};
@@ -71,31 +71,31 @@ impl Component for Comp {
 
 ### `batch_callback`
 
-Create a callback that will send a batch of messages to the component when it is executed.
-The difference to `callback` is that the closure passed to this method doesn't have to return a message.
-Instead, the closure can return either `Vec<Msg>` or `Option<Msg>` where `Msg` is the component's message type.
+Crea un callback que enviará un lote de mensajes al componente cuando este se ejecute.
+La diferencia con `callback` es que el closure proporcionado a este método no tiene un mensaje de retorno.
+En su lugar, el closure puede regresar `Vec<Msg>` o `Option<Msg>` donde `Msg` es el tipo de mensaje del componente.
 
-`Vec<Msg>` is treated as a batch of messages and uses `send_message_batch` under the hood.
+`Vec<Msg>` es tratado como un lote de mensajes y usa `send_message_batch` internamente.
 
-`Option<Msg>` calls `send_message` if it is `Some`. If the value is `None`, nothing happens.
-This can be used in cases where, depending on the situation, an update isn't required.
+`Option<Msg>` llama a `send_message` si es `Some`. Si el valor es `None`, no pasa nada.
+Esto puede usarse en casos donde, dependiendo la situación, no se requiere una actualización.
 
-This is achieved using the `SendAsMessage` trait which is only implemented for these types.
-You can implement `SendAsMessage` for your own types which allows you to use them in `batch_callback`.
+Esto se logra usando la característica `SendAsMessage` la cual sólo es implementada para estos tipos.
+Puedes implementar `SendAsMessage` para tus propios tipos lo que te permite usarlos en `batch_callback`.
 
-Like `callback`, this method also has a `FnOnce` counterpart, `batch_callback_once`.
-The same restrictions apply as for `callback_once`.
+Como `callback`, este método también tiene una contraparte `FnOnce`, `batch_callback_once`.
+Aplican las mismas restricciones como en `callback_once`.
 
 ## Callbacks
 
-_\(This might need its own short page.\)_
+_\(Esto podría necesitar su propia página corta.\)_
 
-Callbacks are used to communicate with services, agents, and parent components within Yew.
-Internally their type is just `Fn` wrapped in `Rc` to allow them to be cloned.
+Los callback son usados para comunicarse con los servicios, agentes y componentes padre dentro de Yew.
+Internamente, su tipo es sólo `Fn` envuelto en `Rc` para permitirles ser clonados.
 
-They have an `emit` function that takes their `<IN>` type as an argument and converts that to a message expected by its destination. If a callback from a parent is provided in props to a child component, the child can call `emit` on the callback in its `update` lifecycle hook to send a message back to its parent. Closures or Functions provided as props inside the `html!` macro are automatically converted to Callbacks.
+Tienen una función `emit` que toma su tipo `<IN>` como un argumento y lo convierte a un mensaje esperado por su destino. Si se proporciona un callback de un padre en los props a un componente hijo, el hijo puede llamar a `emit` en el callback en su hook `update` de su ciclo de vida para enviar un mensaje de vuelta a su padre. Los Closures o Functions proporcionados como props dentro de la macro `html!` son convertidos automáticamente a Callbacks.
 
-A simple use of a callback might look something like this:
+Un uso simple de un callback podría verse como esto:
 
 ```rust
 use yew::{html, Component, Context, Html};
@@ -126,9 +126,9 @@ impl Component for Comp {
 }
 ```
 
-The function passed to `callback` must always take a parameter. For example, the `onclick` handler requires a function which takes a parameter of type `MouseEvent`. The handler can then decide what kind of message should be sent to the component. This message is scheduled for the next update loop unconditionally.
+La función pasada a `callback` siempre debe tomar un parámetro, el manejador `onclick` requiere una función la cual toma un parámetro del tipo `MouseEvent`. El manejador puede decidir qué tipo de mensaje debe enviar al componente. Este mensaje es programado para el pŕoximo ciclo de actualización incondicionalmente.
 
-If you need a callback that might not need to cause an update, use `batch_callback`.
+Si necesitas un callback que podría no necesitar causar una actualización, usa `batch_callback`.
 
 ```rust
 use yew::{events::KeyboardEvent, html, Component, Context, Html};
@@ -166,6 +166,7 @@ impl Component for Comp {
 }
 ```
 
-## Relevant examples
-- [Counter](https://github.com/yewstack/yew/tree/master/examples/counter)
-- [Timer](https://github.com/yewstack/yew/tree/master/examples/timer)
+## Ejemplos relevantes
+
+- [Contador](https://github.com/yewstack/yew/tree/master/examples/counter)
+- [Temporizador](https://github.com/yewstack/yew/tree/master/examples/timer)
