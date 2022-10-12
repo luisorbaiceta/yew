@@ -1,12 +1,12 @@
 ---
-title: "Children"
+title: "Hijos"
 ---
 
-## General usage
+## Uso general
 
-_Most of the time,_ when allowing a component to have children, you don't care 
-what type of children the component has. In such cases, the below example will
-suffice.
+_La mayor parte del tiempo,_ cuando permitimos que un componente tenga un hijo, no es de tú interés
+qué tipo de hijo tiene el componente. En estos casos, el ejemplo de abajo
+bastará.
 
 ```rust
 use yew::{html, Children, Component, Context, Html, Properties};
@@ -37,11 +37,12 @@ impl Component for List {
 }
 ```
 
-## Advanced usage
+## Uso avanzado
 
-### Typed children
-In cases where you want one type of component to be passed as children to your component,
-you can use `yew::html::ChildrenWithProps<T>`.
+### Hijos tipados
+
+En casos donde quieres que un tipo de componente sea pasado como hijo a tu componente,
+puedes usar `yew::html::ChildrenWithProps<T>`.
 
 ```rust
 use yew::{html, ChildrenWithProps, Component, Context, Html, Properties};
@@ -89,13 +90,14 @@ impl Component for List {
 }
 ```
 
-### Enum typed children
-Of course, sometimes you might need to restrict the children to a few different
-components. In these cases, you have to get a little more hands-on with Yew.
+### Hijos tipados Enum
 
-The [`derive_more`](https://github.com/JelteF/derive_more) crate is used here
-for better ergonomics. If you don't want to use it, you can manually implement
-`From` for each variant.
+Desde luego, algunas veces tienes la necesidad de restringir a los hijos a unos pocos
+componentes. En estos casos, debes tener un poco más de práctica con Yew.
+
+La caja [`derive_more`](https://github.com/JelteF/derive_more) se usa aquí
+por mejor ergonomía. Si no quieres usarla, puedes implementar manualmente
+`From` para cada variante.
 
 ```rust
 use yew::{
@@ -180,8 +182,9 @@ impl Component for List {
 }
 ```
 
-### Optional typed child
-You can also have a single optional child component of a specific type too: 
+### Hijo tipado Optional
+
+También puedes tener un solo componente hijo opcional de un tipo específico:
 
 ```rust
 use yew::{
