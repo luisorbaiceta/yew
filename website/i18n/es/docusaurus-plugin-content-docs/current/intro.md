@@ -1,79 +1,79 @@
 ---
-title: "Introduction"
+title: "Introducción"
 slug: /
 ---
 
-## What is Yew?
+## ¿Qué es Yew?
 
-**Yew** is a modern [Rust](https://www.rust-lang.org/) framework for creating multi-threaded 
-front-end web apps using [WebAssembly](https://webassembly.org/).
+**Yew** es un framework moderno de [Rust](https://www.rust-lang.org/) para la creación de aplicaciones
+web frontend multi-hilo usando [WebAssembly](https://webassembly.org/).
 
-* It features a **component-based** framework which makes it easy to create interactive UIs. 
-Developers who have experience with frameworks like [React](https://reactjs.org/) and 
-[Elm](https://elm-lang.org/) should feel quite at home when using Yew.
-* It achieves **great performance** by minimizing DOM API calls and by helping developers to easily 
-offload processing to background threads using web workers.
-* It supports **JavaScript interoperability**, allowing developers to leverage NPM packages and 
-integrate with existing JavaScript applications.
+* Cuenta con un framework **basado en componentes** el cual facilita la creación de interfaces de usuario interactivas.
+Los desarrolladores con experiencia en frameworks como [React](https://reactjs.org/) y
+[Elm](https://elm-lang.org/) se sentirán como en casa usando Yew.
+* Logra un **gran desempeño** al minimizar las llamadas a la API del DOM y ayudando a los desarrolladores a
+delegar fácilmente el procesamiento a hilos en segundo plano usando web workers.
+* Soporta **interoperabilidad JavaScript**, permitiendo a los desarrolladores aprovechar los paquetes NPM
+y la integración con aplicaciones JavaScript existentes.
 
-### Join Us 😊
+### Únete 😊
 
-* You can report bugs and discuss features on the [GitHub issues page](https://github.com/yewstack/yew/issues)
-* We love pull requests. Check out the [good first issues](https://github.com/yewstack/yew/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) 
-if you'd like to help out!
-* Our [Discord chat](https://discord.gg/VQck8X4) is very active and is a great place to ask 
-questions
+* Puedes reportar bugs y discutir features en la [página de issues de GitHub](https://github.com/yewstack/yew/issues)
+* Amamos los pull requests. ¡Revisa los [good first issues](https://github.com/yewstack/yew/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) 
+si te gustaría ayudar!
+* Nuestro [chat de Discord](https://discord.gg/VQck8X4) está muy activo y es un gran lugar
+para realizar preguntas
 
-### Ready to dive in?
+### ¿Listo para empezar?
 
-Click the link below to learn how to build your first Yew app and learn from community-built example 
-projects
+Da clic en el enlace de abajo para aprender cómo construir tu primer applicación Yew y aprender de los
+proyectos de ejemplo construidos por la comunidad
 
-[Getting started](getting-started/project-setup.md)
+[Comenzando](./getting-started/project-setup.md)
 
-### Still not convinced?
+### ¿Aún no estás convencido?
 
-This project is built on cutting edge technology and is great for developers who like to develop the 
-foundational projects of tomorrow. We think that the speed and reliability of the technologies on
-which Yew is built are set to become the standard for fast and resilient web applications of the
-future. 
+Este proyecto es construido con tecnología de punta y es genial para desarrolladores que quieren crear 
+los proyectos fundacionales del mañana. Pensamos que la velocidad y fiabilidad de las tecnologías en
+las que Yew es construido se volverán el estándar para aplicaciones web rápidas y resilientes
+del futuro.
 
-#### Wait, why WebAssembly?
+#### Espera, ¿por qué WebAssembly?
 
-WebAssembly _\(Wasm\)_ is a portable low-level language that Rust can compile to. It runs at native 
-speeds in the browser and is interoperable with JavaScript and supported in all major modern 
-browsers. For ideas on how to get the most out of WebAssembly for your app, check out this list of 
-[use cases](https://webassembly.org/docs/use-cases/).
+WebAssembly _\(Wasm\)_ es un lenguaje portable de bajo nivel en el que Rust puede compilar. Se ejecuta
+a velocidades nativas en el navegador y es interoperable con JavaScript y soportado en la gran mayoría de navegadores
+modernos. Para ideas de cómo obtener el mayor provecho de WebAssembly en tu aplicación, revisa esta lista de
+[casos de uso](https://webassembly.org/docs/use-cases/).
 
-It should be noted that using Wasm is not \(yet\) a silver bullet for improving the performance of 
-web apps. As of the present, using DOM APIs from WebAssembly is still slower than calling them 
-directly from JavaScript. This is a temporary issue which the 
-[WebAssembly Interface Types](https://github.com/WebAssembly/interface-types/blob/master/proposals/interface-types/Explainer.md) proposal aims to resolve. If you would like to learn more, check out this 
-[excellent article](https://hacks.mozilla.org/2019/08/webassembly-interface-types/) (from Mozilla) 
-which describes the proposal.
+Cabe señalar que usar Wasm no es (aún) una solución a prueba de fallos para mejorar el rendimiento de
+las aplicaciones web. Por ahora, el usar las APIs DOM de WebAssembly aún es más lento que llamarlas
+directamente desde JavaScript. Este es un problema temporal el cual se pretende resolver con
+[WebAssembly Interface Types](https://github.com/WebAssembly/interface-types/blob/master/proposals/interface-types/Explainer.md).
+Si quieres aprender más, revisa este [excelente artículo](https://hacks.mozilla.org/2019/08/webassembly-interface-types/) (de Mozilla) 
+el cual describe la propuesta.
 
-#### Ok, but why Rust?
+#### De acuerdo, pero ¿por qué Rust?
 
-Rust is blazing fast and reliable with its rich type system and ownership model. It has a tough 
-learning curve but is well worth the effort. Rust has been voted the most loved programming 
-language in Stack Overflow's Developer Survey five years in a row: 
+Rust es increíblemente rápido y confiable con su rico sistema de tipos y su modelo de propiedad. Tiene una gran 
+curva de aprendizaje pero bien vale el esfuerzo. Rust ha sido votado como el lenguaje de programación 
+más amado en la encuesta a desarrolladores de Stack Overflow por cinco años consecutivos:
 [2016](https://insights.stackoverflow.com/survey/2016#technology-most-loved-dreaded-and-wanted), 
 [2017](https://insights.stackoverflow.com/survey/2017#most-loved-dreaded-and-wanted), 
 [2018](https://insights.stackoverflow.com/survey/2018#technology-_-most-loved-dreaded-and-wanted-languages), 
 [2019](https://insights.stackoverflow.com/survey/2019#technology-_-most-loved-dreaded-and-wanted-languages) 
-and [2020](https://insights.stackoverflow.com/survey/2020#most-loved-dreaded-and-wanted).
+y [2020](https://insights.stackoverflow.com/survey/2020#most-loved-dreaded-and-wanted).
 
-Rust also helps developers write safer code with its rich type system and ownership model. Say 
-goodbye to hard to track down race condition bugs in JavaScript! In fact, with Rust, most of your 
-bugs will be caught by the compiler before your app even runs. And don't worry, when your app does 
-run into an error, you can still get full stack-traces for your Rust code in the browser console.
+Rust también ayuda a los desarrolladores a escribir código más seguro con su rico sistema de tipos y modelo de propiedad. ¡Dile 
+adiós a los bugs de condiciones de carrera difíciles de rastrear en JavaScript! De hecho, con Rust, la mayoría de tus 
+bugs serán detectados por el compilador aún antes que tú aplicación se ejecute. Y no te preocupes, cuando se encuentre un 
+error en tú aplicación, todavía puedes obtener rastros completos de la pila de errores para tú código Rust en la consola del navegador.
 
-#### Alternatives?
+#### ¿Alternativas?
 
-We love to share ideas with other projects and believe we can all help each other reach the full 
-potential of this exciting new technology. If you're not into Yew, you might like the following 
-projects:
+Amamos compartir ideas con otros proyectos y creemos que todos podemos ayudarnos entre sí para alcanzar 
+nuestro máximo potencial de esta excitante y nueva tecnología. Si lo tuyo no es Yew, te podrían gustar 
+los siguientes proyectos:
 
-* [Percy](https://github.com/chinedufn/percy) - _"A modular toolkit for building isomorphic web apps 
-with Rust + WebAssembly"_
-* [Seed](https://github.com/seed-rs/seed) - _"A Rust framework for creating web apps"_
+* [Percy](https://github.com/chinedufn/percy) - _"Una caja de herramientas modular para construir
+aplicaciones web isomórficas con Rust + WebAssembly"_
+* [Seed](https://github.com/seed-rs/seed) - _"Un framework de Rust para crear aplicaciones web"_
