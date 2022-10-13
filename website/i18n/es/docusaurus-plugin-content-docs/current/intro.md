@@ -33,7 +33,7 @@ proyectos de ejemplo construidos por la comunidad
 
 ### ¿Aún no estás convencido?
 
-Este proyecto es construido con tecnología de punta y es genial para desarrolladores que quieren crear 
+Este proyecto está construido con tecnología punta y es genial para desarrolladores que quieren crear 
 los proyectos fundacionales del mañana. Pensamos que la velocidad y fiabilidad de las tecnologías en
 las que Yew es construido se volverán el estándar para aplicaciones web rápidas y resilientes
 del futuro.
