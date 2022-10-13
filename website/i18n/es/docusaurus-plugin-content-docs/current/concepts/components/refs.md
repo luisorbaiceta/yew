@@ -1,17 +1,16 @@
 ---
-title: "Refs"
-description: "Out-of-band DOM access"
+title: "Referencias"
+description: "Acceso DOM fuera de banda"
 ---
 
-The `ref` keyword can be used inside of any HTML element or component to get the DOM `Element` that 
-the item is attached to. This can be used to make changes to the DOM outside of the `view` lifecycle
-method. 
+La palabra reservada `ref` puede ser usada dentro de cualquier elemento HTML o componente para obtener el `Elemento` DOM al
+que está adjunto el ítem. Esto puede ser usado para realizar cambios al DOM fuera del método del ciclo de vida de la `vista`.
 
-This is useful for getting ahold of canvas elements, or scrolling to different sections of a page. 
-For example, using a `NodeRef` in a component's `rendered` method allows you to make draw calls to 
-a canvas element after it has been rendered from `view`.
+Esto es útil para conseguir elementos del lienzo, o desplazarse a distintas secciones de la página. 
+Por ejemplo, usando un `NodeRef` en el método `rendered` de un componente, te permite realizar llamadas de dibujo a 
+un elemento de lienzo después que ha sido renderizado por la `vista`.
 
-The syntax is:
+La sintaxis es:
 
 ```rust
 use web_sys::Element;
@@ -50,5 +49,6 @@ impl Component for Comp {
 }
 ```
 
-## Relevant examples
+## Ejemplos relevantes
+
 - [Node Refs](https://github.com/yewstack/yew/tree/master/examples/node_refs)
