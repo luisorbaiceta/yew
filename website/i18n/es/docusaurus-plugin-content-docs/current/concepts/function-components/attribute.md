@@ -1,15 +1,16 @@
 ---
 title: "#[function_component]"
-description: "The #[function_component] attribute"
+description: "El atributo #[function_component]"
 ---
 
-`#[function_component(_)]` turns a normal Rust function into a function component.
-Functions with the attribute have to return `Html` and may take a single parameter for the type of props the component should accept.
-The parameter type needs to be a reference to a `Properties` type (ex. `props: &MyProps`).
-If the function doesn't have any parameters the resulting component doesn't accept any props.
+`#[function_component(_)]` convierte una función normal de Rust en un componente de función.
+Las funciones con el atributo tienen que retornar `Html` y pueden tomar un sólo parámetro para el tipo de props que el componente debe aceptar.
+El tipo de parámetro necesita ser una referencia a un tipo `Properties` (ej. `props: &MyProps`).
+Si la función no tiene ningún parámetro el componente resultante no acepta ningún props.
 
-The attribute doesn't replace your original function with a component. You need to provide a name as an input to the attribute which will be the identifier of the component.
-Assuming you have a function called `chat_container` and you add the attribute `#[function_component(ChatContainer)]` you can use the component like this:
+El atributo no reemplaza tú función original con un componente. Necesitas proveer un nombre como entrada al atributo el cual será el identificador del componente.
+
+Asumiendo que tienes una función llamada `chat_container` y que agregas el atributo `#[function_component(ChatContainer)]`, puedes usar el componente así:
 
 ```rust
 use yew::{function_component, html, Html};
@@ -26,7 +27,7 @@ html! {
 };
 ```
 
-## Example
+## Ejemplo
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--With props-->
@@ -78,9 +79,9 @@ fn app() -> Html {
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## Generic function components
+## Componentes de funciones genéricas
 
-The `#[function_component(_)]` attribute also works with generic functions for creating generic components.
+El atributo `#[function_component(_)]` también funciona con funciones genéricas para crear componentes genéricos.
 
 ```rust
 use std::fmt::Display;
