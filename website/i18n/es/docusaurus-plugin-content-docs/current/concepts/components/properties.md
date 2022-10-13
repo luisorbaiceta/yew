@@ -1,53 +1,53 @@
 ---
-title: "Properties"
-description: "Parent to child communication"
+title: "Propiedades"
+description: "Comunicación padre a hijo"
 ---
 
-Properties enable child and parent components to communicate with each other.
-Every component has an associated properties type which describes what is passed down from the parent.
-In theory this can be any type that implements the `Properties` trait, but in practice there's no
-reason for it to be anything but a struct where each field represents a property.
+Las propiedades habilitan a los componentes padre e hijo el comunicarse entre sí.
+Cada componente tiene un tipo de propiedades asociadas la cual describe qué es pasado desde el padre.
+En teoría esto puede ser de cualquier tipo que implemente la característica `Properties`, pero en la práctica no hay
+razón para que sea cualquier tipo sino una estructura donde cada campo representa una propiedad.
 
-## Derive macro
+## Derivar macro
 
-Instead of implementing the `Properties` trait yourself, you should use `#[derive(Properties)]` to
-automatically generate the implementation instead.
-Types for which you derive `Properties` must also implement `PartialEq`.
+En lugar de implementar la característica `Properties` tú mismo, deberías usar `#[derive(Properties)]` para
+generar automáticamente la implementación.
+Los tipos para los cuales derivas `Properties` también deben implementar a `PartialEq`.
 
-### Field attributes
+### Atributos de campo
 
-When deriving `Properties`, all fields are required by default.
-The following attributes allow you to give your props initial values which will be used unless they're set to another value.
+Cuando derivas `Properties`, todos los campos son requeridos por defecto.
+Los siguientes atributos te permiten dar a tus props valores iniciales los cuales serán usados a menos que le sean asignados otro valor.
 
 :::tip
-Attributes aren't visible in Rustdoc generated documentation.
-The docstrings of your properties should mention whether a prop is optional and if it has a special default value.
+Los atributos no son visibles en la documentación generada por Rustdoc.
+Los docstrings de tus propiedades deberían mencionar si una prop es opcional y si tiene un valor especial por defecto.
 :::
 
 #### `#[prop_or_default]`
 
-Initialize the prop value with the default value of the field's type using the `Default` trait.
+Inicializa el valor del prop con el valor por defecto del tipo de campo usando la característica `Default`.
 
 #### `#[prop_or(value)]`
 
-Use `value` to initialize the prop value. `value` can be any expression that returns the field's type.
-For example, to default a boolean prop to `true`, use the attribute `#[prop_or(true)]`.
+Usa `value` para inicializar el valor del prop. El `value` puede ser cualquier expresión que regrese el tipo de campo.
+Por ejemplo, para asignar por defecto un prop booleano a `true`, usa el atributo `#[prop_or(true)]`.
 
 #### `#[prop_or_else(function)]`
 
-Call `function` to initialize the prop value. `function` should have the signature `FnMut() -> T` where `T` is the field type.
+Llama a `function` para inicializar el valor del prop. `function` debe tener la firma `FnMut() -> T` donde `T` es el tipo de campo.
 
 ## `PartialEq`
 
-`Properties` require `PartialEq` to be implemented. This is so that they can be compared by Yew to call the `changed` method
-only when they change.
+Los `Properties` requieren `PartialEq` sea implementado. Esto es para que puedan ser comparados por Yew al llamar
+el método `changed` sólo cuando estos cambien.
 
-## Memory/speed overhead of using Properties
+## Sobrecarga de memoria/velocidad del uso de Properties
 
-Internally properties are reference counted. This means that only a pointer is passed down the component tree for props.
-It saves us from the cost of having to clone the entire props, which might be expensive.
+Internamente, las propiedades son contadas por referencia. Esto significa que sólo es pasado un apuntador por el árbol de componentes para los props.
+Esto nos evita el costo de tener que clonar los props completos, lo cual puede ser costoso.
 
-## Example
+## Ejemplo
 
 ```rust
 use std::rc::Rc;
@@ -83,12 +83,12 @@ pub struct LinkProps {
 }
 ```
 
-## Props macro
+## Macro de props
 
-The `yew::props!` macro allows you to build properties the same way the `html!` macro does it.
+El macro `yew::props!` te permite construir propiedades de la misma forma que lo hace el macro `html!`.
 
-The macro uses the same syntax as a struct expression except that you can't use attributes or a base expression (`Foo { ..base }`).
-The type path can either point to the props directly (`path::to::Props`) or the associated properties of a component (`MyComp::Properties`).
+El macro usa la misma sintaxis que una expresión de estructura excepto que no puedes usar atributos o una expresión base (`Foo { ..base }`).
+La ruta de tipo puede tanto apuntar a las props directamente (`path::to::Props`) o a las propiedades asociadas de un componente (`MyComp::Properties`).
 
 ```rust
 use std::rc::Rc;
