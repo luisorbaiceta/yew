@@ -6,7 +6,7 @@ description: "Los hooks predefinidos que vienen con Yew"
 ## `use_state`
 
 `use_state` se usa para manejar el estado en un componente de función.
-Este retorna un objeto `UseStateHandle` el cual se `desreferencia` al valor actual
+Este devuelve un objeto `UseStateHandle` el cual se `desreferencia` al valor actual
 y provee un método `set`para actualizar el valor.
 
 El hook toma una función como entrada la cual determina el estado inicial.
