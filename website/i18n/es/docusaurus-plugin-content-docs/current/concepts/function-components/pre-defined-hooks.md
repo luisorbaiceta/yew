@@ -17,7 +17,7 @@ del componente. Puedes fácilmente omitir el `UseStateHandle` de los
 dependientes de `use_effect_with_deps` si sólo pretendes asignar
 los valores desde el hook.
 
-Este hook siempre lanzará una nueva renderización al recibir un nuevo estado. Ve [`use_state_eq`](#use_state_eq) si quieres que el componente sólo vuelva a renderizar cuando cambie el estado.
+Este hook siempre lanzará una nueva renderización al recibir un nuevo estado. Utiliza [`use_state_eq`](#use_state_eq) si quieres que el componente sólo vuelva a renderizar cuando cambie el estado.
 
 ### Ejemplo
 
