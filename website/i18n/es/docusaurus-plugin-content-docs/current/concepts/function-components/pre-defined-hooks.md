@@ -58,7 +58,7 @@ dependientes y así el hook puede estar actualizado cuando el valor cambie.
 ## `use_state_eq`
 
 Este hook tiene el mismo efecto que `use_state` pero sólo lanzará una
-actualización de renderización cuando el setter reciba un valor dónde `prev_state != next_state`.
+actualización de renderización cuando el setter reciba un valor donde `prev_state != next_state`.
 
 Este hook requiere que el objeto de estado implemente `PartialEq`.
 
